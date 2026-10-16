@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Achadinhos Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F1FF;--s1:#FFFFFF;--s2:#ECE8FF;--tx:#17143A;--mu:#67638F;--bd:rgba(80,60,200,.16);--a1:#6D4AFF;--a2:#E8337E;--a3:#0891B2;--ok:#0F9F6E;--warn:#C27803;--bad:#D6254F;--glow:rgba(109,74,255,.25)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A0920;--s1:#141235;--s2:#1D1A4A;--tx:#EEEBFF;--mu:#9C98CC;--bd:rgba(150,130,255,.22);--a1:#8B6DFF;--a2:#FF4D93;--a3:#22D3EE;--ok:#34D399;--warn:#FBBF24;--bad:#FF6B8B;--glow:rgba(139,109,255,.35)}}
+:root[data-theme="dark"]{--bg:#0A0920;--s1:#141235;--s2:#1D1A4A;--tx:#EEEBFF;--mu:#9C98CC;--bd:rgba(150,130,255,.22);--a1:#8B6DFF;--a2:#FF4D93;--a3:#22D3EE;--ok:#34D399;--warn:#FBBF24;--bad:#FF6B8B;--glow:rgba(139,109,255,.35)}
+*{box-sizing:border-box}
+html{color-scheme:light dark}:root[data-theme="light"]{color-scheme:light}:root[data-theme="dark"]{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 15px/1.5 Figtree,system-ui,sans-serif;min-height:100vh;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);background-image:radial-gradient(900px 400px at 85% -10%,var(--glow),transparent 70%)}
+h1,h2,.logo{font-family:Sora,system-ui,sans-serif;margin:0}
+main{max-width:1100px;margin:0 auto;padding:24px 20px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:22px;display:flex;align-items:center;gap:10px}
+.logo i{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));box-shadow:0 0 18px var(--glow)}
+.bar{display:flex;gap:8px}
+.pill{background:var(--s1);border:1px solid var(--bd);color:var(--tx);padding:9px 14px;border-radius:999px;font:600 14px Figtree,sans-serif;cursor:pointer}
+:focus-visible{outline:2px solid var(--a3);outline-offset:2px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.st,.card{background:var(--s1);border:1px solid var(--bd);border-radius:16px}
+.st{padding:16px}.st b{font:800 28px Sora,sans-serif;display:block}.st span{color:var(--mu);font-size:13px}
+.comp{border-radius:20px;padding:2px;margin-bottom:20px;background:conic-gradient(from var(--ang,0deg),var(--a1),var(--a2),var(--a3),var(--a1));animation:spin 7s linear infinite}
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes spin{to{--ang:360deg}}
+.comp-in{background:var(--s1);border-radius:18px;padding:22px;display:grid;grid-template-columns:1fr 300px;gap:26px}
+h2{font-size:19px;margin-bottom:14px}
+.f{display:grid;grid-template-columns:1fr 1fr;gap:12px}.f .w{grid-column:1/-1}
+label{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--mu);font-weight:500}
+input,select{background:var(--s2);border:1px solid var(--bd);color:var(--tx);border-radius:10px;padding:11px 12px;font:500 15px Figtree,sans-serif;width:100%}
+.btn{border:0;border-radius:12px;padding:13px 20px;font:700 15px Sora,sans-serif;color:#fff;cursor:pointer;background:linear-gradient(135deg,var(--a1),var(--a2));box-shadow:0 8px 24px var(--glow);margin-top:16px}
+.btn:disabled{opacity:.6;cursor:wait}
+.btn.sm{margin:0;padding:7px 14px;font-size:13px;border-radius:9px;box-shadow:none}
+.prev{background:var(--s2);border:1px solid var(--bd);border-radius:16px;min-height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;color:var(--mu);padding:12px;font-size:14px;align-self:start}
+.prev img,.prev video{max-width:100%;max-height:420px;border-radius:10px;display:block}
+.card{padding:18px;margin-bottom:20px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:680px}
+th{text-align:left;color:var(--mu);font-weight:500;font-size:13px;padding:8px 10px}
+td{padding:11px 10px;border-top:1px solid var(--bd);vertical-align:middle}
+.pl{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;color:#fff}
+.kw{font-family:ui-monospace,Menlo,monospace;background:var(--s2);padding:3px 8px;border-radius:6px;font-size:13px}
+.ok{color:var(--ok);font-weight:600}.q{color:var(--warn);font-weight:600}
+.tk{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.login{max-width:380px;margin:12vh auto}.login .card{padding:26px}
+.err{color:var(--bad);font-size:13px;min-height:18px;margin-top:8px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--tx);color:var(--bg);padding:11px 18px;border-radius:12px;font-weight:600;opacity:0;transition:.3s;pointer-events:none;max-width:90vw}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.hide{display:none!important}
+@media(max-width:860px){.stats{grid-template-columns:1fr 1fr}.comp-in{grid-template-columns:1fr}}
+@media(max-width:520px){.f{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.comp{animation:none}}
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <div class="logo"><i></i>Achadinhos Hub</div>
+    <div class="bar"><button class="pill" id="tema" type="button">🌙 Escuro</button><button class="pill hide" id="sair" type="button">Sair</button></div>
+  </div>
+
+  <section id="login" class="login hide">
+    <div class="card">
+      <h2>Entrar</h2>
+      <label>Senha do painel<input id="senha" type="password" autocomplete="current-password"></label>
+      <button class="btn" id="entrar" type="button" style="width:100%">Entrar</button>
+      <div class="err" id="lerr"></div>
+    </div>
+  </section>
+
+  <section id="app" class="hide">
+    <div class="stats">
+      <div class="st"><b id="s1">0</b><span>Publicados</span></div>
+      <div class="st"><b id="s2">0</b><span>Na fila</span></div>
+      <div class="st"><b id="s3">0</b><span>Comentários</span></div>
+      <div class="st"><b id="s4">0</b><span>Links enviados por DM</span></div>
+    </div>
+
+    <div class="comp"><div class="comp-in">
+      <div>
+        <h2>Novo achadinho</h2>
+        <div class="f">
+          <label>Plataforma<select id="pl"><option>Shopee</option><option>Amazon</option><option>Mercado Livre</option><option>Magazine Luiza</option></select></label>
+          <label>Formato<select id="fm"><option value="feed">Imagem (feed)</option><option value="reels">Vídeo (Reels)</option></select></label>
+          <label class="w">Nome do produto<input id="nm" maxlength="120"></label>
+          <label>Preço (R$)<input id="pc" placeholder="59,90"></label>
+          <label>Palavra-chave<input id="kw" value="QUERO" maxlength="20"></label>
+          <label class="w">Link de afiliado<input id="lk" placeholder="https://..."></label>
+          <label class="w">Foto do produto (opcional)<input id="ft" placeholder="https://..."></label>
+        </div>
+        <button class="btn" id="criar" type="button">Gerar arte</button>
+      </div>
+      <div class="prev" id="prev">A arte gerada aparece aqui</div>
+    </div></div>
+
+    <div class="card">
+      <h2>Seus achadinhos</h2>
+      <table><thead><tr><th>Produto</th><th>Plataforma</th><th>Palavra</th><th>Status</th><th>Coment.</th><th>DMs</th><th></th></tr></thead><tbody id="rows"></tbody></table>
+    </div>
+
+    <div class="card tk">
+      <div><b>Token do Instagram</b><div id="tkinfo" style="color:var(--mu);font-size:14px">Carregando…</div></div>
+      <button class="pill" id="renovar" type="button">Renovar agora</button>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+var $=function(i){return document.getElementById(i)};
+var COR={"Shopee":"#EE4D2D","Amazon":"#E68A00","Mercado Livre":"#C9A800","Magazine Luiza":"#0086FF"};
+var KEY="";try{KEY=localStorage.getItem("ach-key")||""}catch(e){}
+
+function tema(t){document.documentElement.setAttribute("data-theme",t);$("tema").textContent=t==="dark"?"🌙 Escuro":"☀️ Claro";try{localStorage.setItem("ach-theme",t)}catch(e){}}
+(function(){var t=null;try{t=localStorage.getItem("ach-theme")}catch(e){}
+ if(!t)t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";tema(t)})();
+$("tema").onclick=function(){tema(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark")};
+
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("on");setTimeout(function(){t.classList.remove("on")},3200)}
+
+async function api(path,opt){
+  opt=opt||{};
+  var r=await fetch(path,{method:opt.method||"GET",headers:{"x-admin-key":KEY,"Content-Type":"application/json"},body:opt.body?JSON.stringify(opt.body):undefined});
+  var d=await r.json().catch(function(){return{}});
+  if(r.status===401){mostrarLogin("Senha incorreta");throw new Error("Senha incorreta")}
+  if(!r.ok)throw new Error(d.erro||("Erro "+r.status));
+  return d;
+}
+function mostrarLogin(msg){KEY="";try{localStorage.removeItem("ach-key")}catch(e){}
+  $("app").classList.add("hide");$("sair").classList.add("hide");$("login").classList.remove("hide");$("lerr").textContent=msg||""}
+function mostrarApp(){$("login").classList.add("hide");$("app").classList.remove("hide");$("sair").classList.remove("hide")}
+
+$("entrar").onclick=async function(){
+  KEY=$("senha").value;$("lerr").textContent="";
+  try{await api("/api/achadinhos");try{localStorage.setItem("ach-key",KEY)}catch(e){}$("senha").value="";mostrarApp();carregar()}
+  catch(e){$("lerr").textContent=e.message}
+};
+$("senha").addEventListener("keydown",function(e){if(e.key==="Enter")$("entrar").click()});
+$("sair").onclick=function(){mostrarLogin("")};
+
+function celula(tr,conteudo){var td=document.createElement("td");if(typeof conteudo==="string")td.textContent=conteudo;else td.appendChild(conteudo);tr.appendChild(td)}
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e}
+
+async function carregar(){
+  var lista=await api("/api/achadinhos");
+  var b=$("rows");b.textContent="";
+  lista.forEach(function(r){
+    var tr=document.createElement("tr");
+    celula(tr,r.nome);
+    var p=el("span","pl",r.plataforma);p.style.background=COR[r.plataforma]||"#6D4AFF";celula(tr,p);
+    celula(tr,el("span","kw",r.keyword));
+    celula(tr,el("span",r.status==="publicado"?"ok":"q",r.status==="publicado"?"Publicado":"Na fila"));
+    celula(tr,String(r.comentarios));celula(tr,String(r.dms));
+    var ac=document.createElement("div");
+    if(r.status!=="publicado"){
+      var bt=el("button","btn sm","Publicar");
+      bt.onclick=function(){publicar(r.id,bt)};ac.appendChild(bt);
+    }
+    celula(tr,ac);b.appendChild(tr);
+  });
+  var pub=lista.filter(function(r){return r.status==="publicado"});
+  $("s1").textContent=pub.length;$("s2").textContent=lista.length-pub.length;
+  $("s3").textContent=lista.reduce(function(a,r){return a+r.comentarios},0);
+  $("s4").textContent=lista.reduce(function(a,r){return a+r.dms},0);
+  token();
+}
+async function token(){
+  try{var t=await api("/api/instagram/token");
+    $("tkinfo").textContent=t.dias_restantes===null?"Validade ainda não confirmada. O sistema tenta renovar sozinho a cada 12 horas.":"Faltam cerca de "+t.dias_restantes+" dias. A renovação é automática.";
+  }catch(e){}
+}
+$("renovar").onclick=async function(){
+  $("renovar").disabled=true;
+  try{await api("/api/instagram/renovar",{method:"POST"});toast("Token renovado");token()}catch(e){toast(e.message)}
+  $("renovar").disabled=false;
+};
+
+$("criar").onclick=async function(){
+  var body={nome:$("nm").value.trim(),preco:$("pc").value.trim(),plataforma:$("pl").value,link:$("lk").value.trim(),keyword:$("kw").value.trim(),formato:$("fm").value};
+  var foto=$("ft").value.trim();if(foto)body.foto_url=foto;
+  if(!body.nome||!body.preco||!body.link||!body.keyword){toast("Preencha nome, preço, link e palavra-chave");return}
+  var bt=$("criar");bt.disabled=true;bt.textContent=body.formato==="reels"?"Gerando vídeo… (até 40 s)":"Gerando arte…";
+  try{
+    var r=await api("/api/achadinhos",{method:"POST",body:body});
+    var pv=$("prev");pv.textContent="";
+    if(r.video_url){var v=document.createElement("video");v.src=r.video_url;v.controls=true;v.muted=true;v.autoplay=true;v.loop=true;v.playsInline=true;pv.appendChild(v)}
+    else if(r.image_url){var im=document.createElement("img");im.src=r.image_url;im.alt="Arte gerada";pv.appendChild(im)}
+    toast("Arte pronta. Confira e clique em Publicar.");
+    $("nm").value="";$("pc").value="";$("lk").value="";$("ft").value="";
+    carregar();
+  }catch(e){toast(e.message)}
+  bt.disabled=false;bt.textContent="Gerar arte";
+};
+
+async function publicar(id,bt){
+  if(!confirm("Publicar este achadinho no Instagram agora?"))return;
+  bt.disabled=true;bt.textContent="Publicando…";
+  try{await api("/api/achadinhos/"+id+"/publicar",{method:"POST"});toast("Publicado no Instagram")}
+  catch(e){toast(e.message)}
+  carregar();
+}
+
+if(KEY){api("/api/achadinhos").then(function(){mostrarApp();carregar()}).catch(function(){})}else mostrarLogin("");
+</script>
+</body>
+</html>
